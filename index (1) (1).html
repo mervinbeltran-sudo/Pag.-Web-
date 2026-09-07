@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="HemoKkao — chocolates fortificados con micro-harina de hígado de pollo y cañihua pop.">
+<title>HemoKkao | Chocolate que suma</title>
+<style>
+:root{
+  --cream:#F5F4EF;
+  --orange:#FF8C00;
+  --yellow:#FFD700;
+  --brown:#3D1E14;
+  --white:#fffdf8;
+  --green:#25D366;
+  --shadow:0 18px 45px rgba(61,30,20,.12);
+  --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--brown);background:var(--cream);line-height:1.55;
+}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:50;background:rgba(245,244,239,.92);
+  backdrop-filter:blur(14px);border-bottom:1px solid rgba(61,30,20,.08)
+}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{
+  display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-1px;
+  font-size:1.55rem;color:var(--brown)
+}
+.logo-mark{width:42px;height:42px;border-radius:13px;background:var(--yellow);display:grid;place-items:center;font-size:23px}
+nav{display:flex;gap:22px;font-size:.92rem;font-weight:750}
+nav a{opacity:.78;transition:.2s}
+nav a:hover{opacity:1;color:var(--orange)}
+.menu{display:none;border:0;background:transparent;font-size:28px;color:var(--brown)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 20px;border-radius:999px;border:2px solid var(--brown);
+  font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 7px 0 var(--brown)
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 9px 0 var(--brown)}
+.btn:active{transform:translateY(4px);box-shadow:0 3px 0 var(--brown)}
+.btn-yellow{background:var(--yellow)}
+.btn-orange{background:var(--orange);color:white}
+.btn-green{background:var(--green);color:white;border-color:#176d38;box-shadow:0 7px 0 #176d38}
+.hero{padding:75px 0 80px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:55px}
+.badge{
+  display:inline-flex;padding:8px 13px;border:1.5px solid var(--orange);border-radius:999px;
+  background:#fff8df;font-size:.82rem;font-weight:900;margin-bottom:18px
+}
+h1{font-size:clamp(3rem,7vw,6.3rem);line-height:.9;letter-spacing:-.075em;max-width:760px}
+h1 span{color:var(--orange)}
+.hero p{font-size:1.12rem;max-width:590px;margin:25px 0;color:#684a3e}
+.actions{display:flex;flex-wrap:wrap;gap:15px;align-items:center}
+.character-mini{width:90px;height:90px;object-fit:contain}
+.hero-art{min-height:430px;display:grid;place-items:center;position:relative}
+.blob{
+  width:min(410px,80vw);aspect-ratio:1;border-radius:44% 56% 52% 48%;
+  background:var(--yellow);position:absolute;transform:rotate(-8deg);
+}
+.bonbon{
+  width:210px;height:210px;border-radius:50%;background:
+  radial-gradient(circle at 34% 27%,#8c5536 0 7%,transparent 8%),
+  radial-gradient(circle at 70% 37%,#7a452b 0 6%,transparent 7%),
+  radial-gradient(circle at 50% 60%,#6e3b25 0 6%,transparent 7%),
+  radial-gradient(circle at 32% 72%,#9d6040 0 5%,transparent 6%),
+  radial-gradient(circle at 65% 76%,#754129 0 5%,transparent 6%),
+  radial-gradient(circle at 35% 30%,#a56a47,#6a371f 48%,#3b1d12 100%);
+  border:8px solid var(--brown);position:relative;z-index:2;
+  box-shadow:0 25px 35px rgba(61,30,20,.25);animation:float 4s ease-in-out infinite
+}
+.bonbon:before{content:"";position:absolute;width:70px;height:25px;background:rgba(255,255,255,.16);border-radius:50%;top:28px;left:35px;transform:rotate(-20deg)}
+@keyframes float{50%{transform:translateY(-13px) rotate(3deg)}}
+.spark{position:absolute;font-size:28px;color:var(--orange);font-weight:900;z-index:3}
+.s1{top:18%;left:14%}.s2{right:12%;top:29%;font-size:20px}.s3{bottom:15%;left:22%}
+section{padding:90px 0}
+.section-head{max-width:690px;margin-bottom:38px}
+.eyebrow{font-weight:950;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);font-size:.76rem}
+h2{font-size:clamp(2.1rem,4vw,3.8rem);line-height:1;letter-spacing:-.055em;margin:9px 0 15px}
+.section-head p{color:#71584d}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:55px;align-items:center}
+.process-card{
+  background:var(--brown);color:var(--white);padding:35px;border-radius:var(--radius);
+  box-shadow:var(--shadow);position:relative;overflow:hidden
+}
+.process-card:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:var(--orange);right:-70px;bottom:-75px}
+.process-number{font-size:5rem;line-height:1;font-weight:950;color:var(--yellow)}
+.process-card h3{font-size:1.55rem;margin:5px 0 10px}
+.process-card p{color:#f1dfd2}
+.features{display:grid;gap:15px}
+.feature{padding:20px 0;border-bottom:1px solid rgba(61,30,20,.14);display:grid;grid-template-columns:52px 1fr;gap:15px}
+.feature-icon{width:48px;height:48px;border-radius:15px;background:var(--yellow);display:grid;place-items:center;font-size:23px}
+.feature h3{margin-bottom:3px}.feature p{color:#71584d}
+.nutrition{background:var(--brown);color:var(--white)}
+.nutrition .section-head p{color:#e8d7cb}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.nutri-card{background:#fff8df;color:var(--brown);border-radius:22px;padding:24px;border:2px solid transparent;transition:.25s}
+.nutri-card:hover{transform:translateY(-5px);border-color:var(--orange)}
+.nutri-icon{font-size:40px;margin-bottom:13px}.nutri-card h3{font-size:1.25rem}
+.nutri-card p{margin-top:7px;color:#725447;font-size:.94rem}
+.editable{
+  margin-top:18px;padding:12px;border-radius:14px;background:#fff;
+  border:1px dashed var(--orange);font-weight:900
+}
+.editable input{width:78px;border:0;border-bottom:2px solid var(--orange);color:var(--brown);font-weight:950;background:transparent;text-align:center}
+.note{font-size:.78rem;opacity:.7;margin-top:12px}
+.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:stretch}
+.panel{background:var(--white);padding:32px;border-radius:var(--radius);box-shadow:var(--shadow)}
+label{display:block;font-weight:850;margin-bottom:8px}
+select{
+  width:100%;padding:14px 15px;border:2px solid rgba(61,30,20,.18);border-radius:14px;
+  background:white;color:var(--brown);outline:none
+}
+select:focus{border-color:var(--orange)}
+.result{
+  margin-top:22px;background:var(--yellow);border:2px solid var(--brown);
+  border-radius:20px;padding:22px;min-height:120px;display:flex;align-items:center;gap:18px;
+  transform:scale(.98);transition:.3s
+}
+.result.show{transform:scale(1)}
+.result-number{font-size:2.4rem;font-weight:950;line-height:1}
+.result small{font-weight:800;display:block;margin-top:4px}
+.mascot-box{background:#fff1bc;border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden}
+.mascot-box:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:var(--yellow);opacity:.6}
+.mascot-placeholder{width:180px;height:180px;border-radius:50%;display:grid;place-items:center;font-size:80px;position:relative;z-index:1}
+.speech{position:relative;z-index:2;background:white;border:2px solid var(--brown);border-radius:20px;padding:14px 18px;font-weight:900;box-shadow:0 8px 0 var(--brown)}
+.survey-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.face-row{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:20px 0}
+.face{
+  border:2px solid rgba(61,30,20,.14);background:white;border-radius:18px;padding:12px 4px;
+  cursor:pointer;font-size:34px;transition:.2s;text-align:center
+}
+.face:hover,.face.selected{background:var(--yellow);border-color:var(--brown);transform:translateY(-5px)}
+.face span{display:block;font-size:.7rem;font-weight:800;margin-top:3px}
+.stars{display:flex;gap:5px;margin:16px 0}
+.star{font-size:35px;color:#d5c7a0;cursor:pointer;transition:.15s}.star.active{color:var(--yellow);text-shadow:0 2px 0 var(--brown)}
+textarea{
+  width:100%;min-height:105px;border:2px solid rgba(61,30,20,.14);border-radius:15px;
+  padding:13px;resize:vertical;color:var(--brown);background:white;outline:none
+}
+.review-wall{display:grid;gap:13px;max-height:470px;overflow:auto}
+.review{background:#fff;border-radius:18px;padding:17px;border-left:5px solid var(--orange)}
+.review .r-top{display:flex;justify-content:space-between;gap:10px;font-weight:900}
+.review .r-stars{color:var(--orange);letter-spacing:2px}
+.order{background:var(--orange);color:white}
+.order-grid{display:grid;grid-template-columns:1fr .9fr;gap:45px;align-items:center}
+.order h2{font-size:clamp(2.5rem,5vw,4.5rem)}
+.order p{color:#fff4e7;max-width:570px;margin:15px 0 25px}
+.box{
+  min-height:360px;background:var(--yellow);border:4px solid var(--brown);border-radius:28px;
+  transform:rotate(2deg);padding:30px;display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:16px 18px 0 rgba(61,30,20,.22)
+}
+.box-top{display:flex;justify-content:space-between;align-items:start}.box-brand{font-size:2rem;font-weight:950;letter-spacing:-.06em}
+.box-logo{width:85px;height:110px;border:3px dashed var(--brown);display:grid;place-items:center;text-align:center;font-weight:950;padding:8px}
+.box h3{font-size:2.2rem;line-height:.95;max-width:260px}
+.bombon-row{display:flex;gap:8px}.tiny-bonbon{width:48px;height:48px;border-radius:50%;background:#6d3b24;border:3px solid var(--brown)}
+.order-foot{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+footer{padding:35px 0;background:var(--brown);color:#f4e6dc}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.88rem}
+.disclaimer{font-size:.75rem;opacity:.7;max-width:760px;margin-top:12px}
+.whatsapp{position:fixed;right:22px;bottom:22px;width:59px;height:59px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:white;font-size:28px;font-weight:950;z-index:60;box-shadow:0 10px 25px rgba(0,0,0,.2);border:3px solid white}
+.toast{
+  position:fixed;left:50%;bottom:25px;transform:translate(-50%,30px);background:var(--brown);color:white;
+  padding:13px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.3s;z-index:100;font-weight:800
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){
+  nav{display:none}.menu{display:block}
+  nav.open{display:flex;position:absolute;top:78px;left:0;right:0;background:var(--cream);padding:22px;flex-direction:column;border-bottom:1px solid #ddd}
+  .hero-grid,.about-grid,.calc-wrap,.survey-grid,.order-grid{grid-template-columns:1fr}
+  .hero{padding-top:45px}.hero-art{min-height:350px}.cards{grid-template-columns:1fr}
+  .box{max-width:480px;width:100%;margin:auto}
+}
+@media(max-width:520px){
+  .nav{height:68px}.logo-mark{width:36px;height:36px}.logo{font-size:1.3rem}
+  section{padding:65px 0}.face-row{gap:5px}.face{padding:9px 1px;font-size:27px}
+  .panel{padding:23px}.btn{width:100%}.actions{display:grid;grid-template-columns:1fr}
+  .character-mini{display:none}.hero-art{min-height:290px}.bonbon{width:165px;height:165px}
+}
+
+.brand-logo{width:150px;height:48px;object-fit:contain;display:block}
+.box-brand-image img{width:150px;height:65px;object-fit:contain;object-position:left center}
+.box-logo{width:85px;height:110px;border:3px dashed var(--brown);display:grid;place-items:center;text-align:center;font-weight:950;padding:8px;overflow:hidden}
+.box-logo img{width:100%;height:100%;object-fit:contain}
+.footer-logo img{width:120px;height:38px;object-fit:contain;filter:brightness(0) invert(1);opacity:.95}
+.hero .character-mini{width:100px;height:100px}
+.mascot-asset{width:190px;height:190px;object-fit:contain;position:relative;z-index:1}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#inicio" aria-label="HemoKkao inicio">
+      <img src="Canvas.svg" alt="Logo HemoKkao" class="brand-logo">
+    </a>
+    <nav id="nav">
+      <a href="#producto">Producto</a>
+      <a href="#nutricion">Ingredientes</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#pedido">Pedido</a>
+    </nav>
+    <button class="menu" id="menuBtn" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">🍫 Una idea hecha para pequeños grandes campeones</div>
+      <h1>Chocolate que <span>suma.</span></h1>
+      <p>HemoKkao combina cacao, cañihua pop y micro-harina de hígado de pollo en un chocolate pensado para convertir una propuesta nutricional en una experiencia rica y amigable.</p>
+      <div class="actions">
+        <a class="btn btn-yellow" href="#pedido">Quiero HemoKkao →</a>
+        <a class="btn" href="#producto">Conocer más</a>
+        <img class="character-mini" src="Grupo.svg" alt="Personajes HemoKkao">
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Ilustración decorativa de chocolate">
+      <div class="blob"></div>
+      <div class="spark s1">✦</div><div class="spark s2">✦</div><div class="spark s3">+</div>
+      <div class="bonbon"></div>
+    </div>
+  </div>
+</section>
+
+<section id="producto">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">La idea detrás del chocolate</div>
+      <h2>Nutrición con una experiencia que sí provoca.</h2>
+      <p>El concepto de HemoKkao busca integrar ingredientes de interés nutricional dentro de una presentación familiar: un chocolate con textura crujiente.</p>
+    </div>
+    <div class="about-grid">
+      <div class="process-card">
+        <div class="process-number">01</div>
+        <h3>Micro-harina de hígado de pollo</h3>
+        <p>El hígado de pollo se somete a un proceso de deshidratación térmica y posterior transformación en micro-harina para incorporarlo a la formulación.</p>
+      </div>
+      <div class="features">
+        <div class="feature"><div class="feature-icon">🔥</div><div><h3>Deshidratación térmica</h3><p>Proceso planteado para reducir la humedad antes de convertir el ingrediente en micro-harina.</p></div></div>
+        <div class="feature"><div class="feature-icon">🍫</div><div><h3>Chocolate como vehículo</h3><p>El cacao aporta la base sensorial del chocolate y ayuda a construir una experiencia agradable.</p></div></div>
+        <div class="feature"><div class="feature-icon">✨</div><div><h3>Cañihua pop</h3><p>Pequeños pops de cañihua aportan un contraste crujiente a cada chocolate.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nutrition" id="nutricion">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Composición editable</div>
+      <h2>¿Qué hay dentro?</h2>
+      <p>Los valores mostrados son campos editables para el prototipo. Sustituye los datos por los resultados reales y validados de la formulación antes de publicar información nutricional.</p>
+    </div>
+    <div class="cards">
+      <article class="nutri-card">
+        <div class="nutri-icon">🍫</div><h3>Cacao</h3>
+        <p>Base del chocolate y protagonista de su perfil de sabor.</p>
+        <div class="editable">Cantidad: <input id="cacao" type="number" value="60" min="0"> %</div>
+      </article>
+      <article class="nutri-card">
+        <div class="nutri-icon">🌾</div><h3>Cañihua Pop</h3>
+        <p>Ingrediente utilizado para aportar el componente crujiente.</p>
+        <div class="editable">Cantidad: <input id="canihua" type="number" value="2" min="0"> g</div>
+      </article>
+      <article class="nutri-card">
+        <div class="nutri-icon">🧪</div><h3>Hierro hemo</h3>
+        <p>Campo destinado al valor validado de hierro aportado por la formulación.</p>
+        <div class="editable">Hierro: <input id="heme" type="number" value="0" min="0" step=".01"> mg</div>
+      </article>
+    </div>
+    <p class="note">* Este prototipo no establece dosis médica ni sustituye la evaluación de un profesional de salud.</p>
+  </div>
+</section>
+
+<section id="calculadora">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Herramienta educativa</div>
+      <h2>Explora tu etapa.</h2>
+      <p>Selecciona una etapa para mostrar una referencia de presentación del producto. La lógica es editable desde JavaScript.</p>
+    </div>
+    <div class="calc-wrap">
+      <div class="panel">
+        <label for="age">Edad / etapa</label>
+        <select id="age">
+          <option value="">Selecciona una opción</option>
+          <option value="3-5">3–5 años</option>
+          <option value="6-8">6–8 años</option>
+          <option value="9-11">9–11 años</option>
+          <option value="12+">12 años a más</option>
+        </select>
+        <div class="result" id="result">
+          <div class="result-number">—</div>
+          <div><strong>Tu resultado aparecerá aquí</strong><small>Selecciona una etapa para explorar.</small></div>
+        </div>
+        <p class="note">Herramienta demostrativa. No usar este selector como indicación de tratamiento, prevención o suplementación de anemia.</p>
+      </div>
+      <div class="mascot-box">
+        <img class="mascot-asset" src="Grupo.svg" alt="Personajes de HemoKkao">
+        <div class="speech" id="speech">“¡Elige tu etapa y descubramos HemoKkao!”</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Experiencia HemoKkao</div>
+      <h2>Tu opinión también alimenta la idea.</h2>
+      <p>Encuesta demostrativa 100% anónima. El muro se actualiza al enviar una nueva experiencia en este navegador.</p>
+    </div>
+    <div class="survey-grid">
+      <div class="panel">
+        <label>¿Qué te pareció?</label>
+        <div class="face-row" id="faces">
+          <button class="face" data-value="1" aria-label="Muy malo">😖<span>Muy malo</span></button>
+          <button class="face" data-value="2" aria-label="Malo">🙁<span>Malo</span></button>
+          <button class="face" data-value="3" aria-label="Regular">😐<span>Regular</span></button>
+          <button class="face" data-value="4" aria-label="Bueno">🙂<span>Bueno</span></button>
+          <button class="face" data-value="5" aria-label="Excelente">🤩<span>¡Excelente!</span></button>
+        </div>
+        <label>Calificación para padres</label>
+        <div class="stars" id="stars" aria-label="Cinco estrellas">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea id="reviewText" placeholder="Cuéntanos brevemente tu experiencia..."></textarea>
+        <button class="btn btn-yellow" style="margin-top:15px;width:100%" id="submitReview">Publicar experiencia</button>
+      </div>
+      <div class="panel">
+        <label>Vista previa de tu experiencia</label>
+        <div class="review" id="previewReview">
+          <div class="r-top"><span>Visitante anónimo</span><span class="r-stars">☆☆☆☆☆</span></div>
+          <p>Tu experiencia aparecerá aquí antes de publicarla.</p>
+        </div>
+        <p class="note" style="margin-top:18px">
+          En esta versión, las experiencias no se guardan en una base de datos ni se muestran públicamente.
+          La publicación es solo una demostración local en tu navegador.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="pedido">
+  <div class="container order-grid">
+    <div>
+      <div class="eyebrow" style="color:var(--yellow)">Presentación oficial</div>
+      <h2>Una caja.<br>Cuatro chocolates.</h2>
+      <p>Presentación propuesta: <strong>Caja HemoKkao × 4 chocolates (10 g c/u)</strong>. Escríbenos por WhatsApp para realizar un pedido en Juliaca.</p>
+      <div class="order-foot">
+        <a class="btn btn-green" id="whatsappBtn" href="#" target="_blank" rel="noopener">💬 Pedir por WhatsApp</a>
+        <small>Juliaca · Pedido oficial</small>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-top">
+        <div class="box-brand-image"><img src="Canvas.svg" alt="Logo HemoKkao"></div>
+        <div class="box-logo"><img src="Canvas.svg" alt="Logo vertical HemoKkao"></div>
+      </div>
+      <div><h3>Chocolate que suma.</h3><div class="bombon-row"><span class="tiny-bonbon"></span><span class="tiny-bonbon"></span><span class="tiny-bonbon"></span><span class="tiny-bonbon"></span></div></div>
+      <strong>× 4 · 10 g c/u</strong>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row"><strong class="footer-logo"><img src="Canvas.svg" alt="HemoKkao"></strong><span>Chocolate · Cañihua Pop · Micro-harina de hígado de pollo</span><span>© <span id="year"></span> HemoKkao</span></div>
+    <p class="disclaimer">Sitio web conceptual. Las declaraciones nutricionales, cantidades de nutrientes, beneficios de salud, formulación y cualquier indicación relacionada con anemia deben validarse antes de uso comercial mediante la documentación técnica y normativa correspondiente.</p>
+  </div>
+</footer>
+
+<a class="whatsapp" id="floatingWhatsApp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">☏</a>
+<div class="toast" id="toast">¡Experiencia publicada!</div>
+
+<script>
+/* =========================
+   CONFIGURACIÓN EDITABLE
+   ========================= */
+const WHATSAPP_NUMBER = "51999999999"; // Cambia por el número oficial, con código de país.
+const DEFAULT_MESSAGE = "¡Hola! Quiero hacer un pedido de la caja HemoKkao x 4 unidades para Juliaca.";
+
+/* Calculadora DEMO: sustituye estas salidas por lógica validada antes de publicar. */
+const STAGE_RESULTS = {
+  "3-5":  "Presentación sugerida: 1 caja para explorar el producto en familia.",
+  "6-8":  "Presentación sugerida: 1 caja para explorar el producto en familia.",
+  "9-11": "Presentación sugerida: 1 caja para explorar el producto en familia.",
+  "12+":  "Presentación sugerida: 1 caja para explorar el producto en familia."
+};
+
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+
+$("#year").textContent = new Date().getFullYear();
+
+/* Menú móvil */
+$("#menuBtn").addEventListener("click", () => $("#nav").classList.toggle("open"));
+$$("nav a").forEach(a => a.addEventListener("click", () => $("#nav").classList.remove("open")));
+
+/* WhatsApp */
+const waURL = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(DEFAULT_MESSAGE);
+$("#whatsappBtn").href = waURL;
+$("#floatingWhatsApp").href = waURL;
+
+/* Calculadora */
+$("#age").addEventListener("change", (e) => {
+  const value = e.target.value;
+  const result = $("#result");
+  const number = result.querySelector(".result-number");
+  const speech = $("#speech");
+  if(!value){
+    number.textContent = "—";
+    result.querySelector("strong").textContent = "Tu resultado aparecerá aquí";
+    result.querySelector("small").textContent = "Selecciona una etapa para explorar.";
+    speech.textContent = "“¡Elige tu etapa y descubramos HemoKkao!”";
+    return;
+  }
+  number.textContent = value;
+  result.querySelector("strong").textContent = "Etapa seleccionada";
+  result.querySelector("small").textContent = STAGE_RESULTS[value];
+  speech.textContent = "“¡Perfecto! Exploraremos HemoKkao para esta etapa.”";
+  result.classList.remove("show");
+  requestAnimationFrame(() => result.classList.add("show"));
+});
+
+/* Encuesta */
+let selectedFace = 0, selectedStars = 0;
+$$(".face").forEach(btn => btn.addEventListener("click", () => {
+  selectedFace = Number(btn.dataset.value);
+  $$(".face").forEach(x => x.classList.toggle("selected", Number(x.dataset.value) === selectedFace));
+  updatePreview();
+}));
+$$(".star").forEach(star => star.addEventListener("click", () => {
+  selectedStars = Number(star.dataset.value);
+  $$(".star").forEach(x => x.classList.toggle("active", Number(x.dataset.value) <= selectedStars));
+  updatePreview();
+}));
+
+function starsText(n){ return "★★★★★".slice(0,n) + "☆☆☆☆☆".slice(0,5-n); }
+function updatePreview(){
+  const rating = selectedStars || selectedFace || 0;
+  const text = $("#reviewText").value.trim();
+  $("#previewReview").innerHTML = `
+    <div class="r-top"><span>Visitante anónimo</span><span class="r-stars">${rating ? starsText(rating) : "☆☆☆☆☆"}</span></div>
+    <p>${escapeHTML(text || "Tu experiencia aparecerá aquí antes de publicarla.")}</p>`;
+}
+$("#reviewText").addEventListener("input", updatePreview);
+
+$("#submitReview").addEventListener("click", () => {
+  if(!selectedFace && !selectedStars && !$("#reviewText").value.trim()){
+    showToast("Selecciona una reacción o escribe una opinión.");
+    return;
+  }
+  updatePreview();
+  showToast("Experiencia preparada en esta demostración.");
+});
+
+const toast = $("#toast");
+function showToast(msg){
+  toast.textContent = msg; toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2300);
+}
+function escapeHTML(str){
+  return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+}
+
+/* Campos editables de formulación: se mantienen en el prototipo. */
+["cacao","canihua","heme"].forEach(id => {
+  $("#" + id).addEventListener("input", e => {
+    if(Number(e.target.value) < 0) e.target.value = 0;
+  });
+});
+</script>
+</body>
+</html>
