@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HemoKkao | Chocolates Fortificados contra la Anemia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blanco-hueso: #F5F4EF;
+            --naranja-calido: #FF8C00;
+            --amarillo-vital: #FFD700;
+            --marron-cacao: #3D1E14;
+            --marron-suave: #6B3A2A;
+            --verde-whatsapp: #25D366;
+            --sombra: 0 10px 25px rgba(61, 30, 20, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background-color: var(--blanco-hueso);
+            color: var(--marron-cacao);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .btn-main {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Estilos para que las imágenes SVG encajen bien */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #ffffff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-nav {
+            width: 180px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--marron-cacao);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--naranja-calido);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            color: var(--naranja-calido);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--marron-suave);
+            line-height: 1.6;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mascotas-hero {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 380px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .btn-main {
+            background-color: var(--amarillo-vital);
+            color: var(--marron-cacao);
+            padding: 15px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 3px solid var(--marron-cacao);
+            box-shadow: 0 6px 0 var(--marron-cacao);
+            display: inline-block;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 var(--marron-cacao);
+        }
+
+        .btn-main:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 var(--marron-cacao);
+        }
+
+        /* Sections */
+        section {
+            padding: 70px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            color: var(--marron-cacao);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 6px;
+            background-color: var(--naranja-calido);
+            margin: 10px auto 0;
+            border-radius: 10px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            border: 3px solid var(--marron-cacao);
+            box-shadow: var(--sombra);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--naranja-calido);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: var(--naranja-calido);
+            font-size: 1.4rem;
+            margin: 15px 0 10px;
+        }
+
+        /* Calculadora */
+        .calc-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            background-color: #FFF9E6;
+        }
+
+        .calc-controls {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .calc-mascota {
+            width: 160px;
+            margin: 0 auto;
+        }
+
+        .range-slider {
+            margin: 25px 0;
+        }
+
+        .range-slider input {
+            width: 100%;
+            height: 12px;
+            border-radius: 10px;
+            background: #E0E0E0;
+            outline: none;
+            accent-color: var(--naranja-calido);
+        }
+
+        .calc-result {
+            background: var(--amarillo-vital);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid var(--marron-cacao);
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* Encuesta */
+        .survey-container {
+            text-align: center;
+        }
+
+        .hedonic-faces {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .face-btn {
+            background: white;
+            border: 3px solid var(--marron-cacao);
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .face-btn:hover, .face-btn.selected {
+            transform: scale(1.2);
+            background-color: var(--amarillo-vital);
+        }
+
+        .star-rating {
+            font-size: 2.2rem;
+            color: #DDD;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .star-rating span {
+            transition: color 0.2s;
+        }
+
+        .star-rating span.active {
+            color: var(--amarillo-vital);
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            border-radius: 16px;
+            border: 2px solid var(--marron-cacao);
+            padding: 15px;
+            font-size: 1rem;
+            resize: none;
+            margin-bottom: 20px;
+        }
+
+        /* Presentación */
+        .presentacion-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .presentacion-img {
+            flex: 1;
+            min-width: 260px;
+            text-align: center;
+            background: var(--blanco-hueso);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px dashed var(--naranja-calido);
+        }
+
+        .presentacion-info {
+            flex: 1.2;
+            min-width: 280px;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--verde-whatsapp);
+            color: white;
+            border: 3px solid var(--marron-cacao);
+            box-shadow: 0 6px 0 var(--marron-cacao);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--marron-cacao);
+            color: white;
+            padding: 40px 5% 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 130px;
+            margin: 0 auto 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-nav">
+            <img src="logo_horizontal.svg" alt="HemoKkao Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#producto">El Chocolate</a></li>
+            <li><a href="#calculadora">Calculadora</a></li>
+            <li><a href="#encuesta">Encuesta</a></li>
+            <li><a href="#pedido">Pedir</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-text">
+            <h1>¡Superpoderes sin anemia comiendo chocolate!</h1>
+            <p>HemoKkao es el primer chocolate crocante fortificado con hierro hémico y cañihua pop. Creado especialmente para que los niños disfruten su salud con una sonrisa.</p>
+            <a href="#pedido" class="btn-main">¡Probar HemoKkao ahora!</a>
+        </div>
+        <div class="hero-visual">
+            <div class="mascotas-hero">
+                <div style="flex: 1;">
+                    <img src="mascota_cacao.svg" alt="Mascota Cacao">
+                </div>
+                <div style="flex: 1.1;">
+                    <img src="mascota_higado.svg" alt="Mascota Hígado">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sobre el Producto -->
+    <section id="producto">
+        <h2 class="section-title">El Secreto de HemoKkao</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Hierro Hémico</h3>
+                <p>Obtenido mediante un proceso natural de micro-deshidratación del hígado de pollo, garantizando alta absorción sin mal sabor.</p>
+            </div>
+            <div class="info-card">
+                <h3>Sabor e Ingredientes</h3>
+                <p>Cacao al 60% que enmascara por completo el olor y sabor cárnico. ¡Sabe 100% a chocolate delicioso!</p>
+            </div>
+            <div class="info-card">
+                <h3>Textura Crocante</h3>
+                <p>Enriquecido con cañihua pop para dar una experiencia divertida y crocante en cada mordisco.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora de Dosis -->
+    <section id="calculadora">
+        <div class="card calc-wrapper">
+            <div class="calc-controls">
+                <h2>Calculadora de Dosis Diaria</h2>
+                <p style="margin-top: 10px;">Selecciona la edad del estudiante para descubrir cuántos chocolates de 10g necesita al día:</p>
+                
+                <div class="range-slider">
+                    <input type="range" id="edadInput" min="3" max="12" value="6" oninput="calcularDosis()">
+                </div>
+                
+                <p style="font-weight: 700;">Edad seleccionada: <span id="edadTexto" style="color: var(--naranja-calido); font-size: 1.3rem;">6 años</span></p>
+
+                <div class="calc-result" id="resultadoDosis">
+                    Dosis recomendada: 2 chocolates al día (20g)
+                </div>
+            </div>
+            <div class="calc-mascota">
+                <img src="mascota_higado.svg" alt="Mascota Hígado Guía">
+            </div>
+        </div>
+    </section>
+
+    <!-- Encuesta Hedónica / Evaluación -->
+    <section id="encuesta">
+        <div class="card survey-container">
+            <h2 class="section-title">¿Qué tal te pareció HemoKkao?</h2>
+            <p>¡Queremos saber tu opinión! Selecciona la carita que indique cuánto te gustó el chocolate:</p>
+            
+            <div class="hedonic-faces">
+                <button class="face-btn" onclick="selectFace(this)">😡</button>
+                <button class="face-btn" onclick="selectFace(this)">🙁</button>
+                <button class="face-btn" onclick="selectFace(this)">😐</button>
+                <button class="face-btn" onclick="selectFace(this)">🙂</button>
+                <button class="face-btn" onclick="selectFace(this)">😍</button>
+            </div>
+
+            <p style="font-weight: 700; margin-top: 15px;">Puntuación general:</p>
+            <div class="star-rating" id="starRating">
+                <span onclick="setRating(1)">★</span>
+                <span onclick="setRating(2)">★</span>
+                <span onclick="setRating(3)">★</span>
+                <span onclick="setRating(4)">★</span>
+                <span onclick="setRating(5)">★</span>
+            </div>
+
+            <textarea placeholder="Escribe aquí tu experiencia o tus sugerencias para mejorar HemoKkao..."></textarea>
+            
+            <button class="btn-main" onclick="enviarEncuesta()">Enviar mi Opinión</button>
+            <p id="mensajeExito" style="color: var(--naranja-calido); font-weight: 700; margin-top: 15px; display: none;">¡Muchas gracias por ayudarnos a mejorar HemoKkao! ❤️</p>
+        </div>
+    </section>
+
+    <!-- Presentación Oficial / Pedido -->
+    <section id="pedido">
+        <div class="card presentacion-flex">
+            <div class="presentacion-img">
+                <div style="width: 140px; margin: 0 auto;">
+                    <img src="logo_vertical.svg" alt="Logo Vertical HemoKkao">
+                </div>
+                <h3 style="margin-top: 15px; color: var(--marron-cacao);">Caja Oficial HemoKkao</h3>
+                <p style="font-size: 0.9rem; color: var(--marron-suave);">Contenido: 4 Unidades de Chocolates de 10g c/u</p>
+            </div>
+            <div class="presentacion-info">
+                <h2>Haz tu pedido directo a Juliaca</h2>
+                <p style="margin: 15px 0;">Consigue tu caja de HemoKkao x 4 chocolates y empieza a combatir la anemia de forma deliciosa y efectiva.</p>
+                <a href="https://wa.me/51900000000?text=%C2%A1Hola!%20Quiero%20solicitar%20un%20pedido%20de%20la%20caja%20HemoKkao%20x%204%20unidades%20para%20Juliaca." target="_blank" class="btn-main btn-whatsapp">
+                    📲 Pedir por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="logo_vertical.svg" alt="Logo HemoKkao Footer" style="filter: brightness(0) invert(1);">
+        </div>
+        <p>© 2026 HemoKkao - Juliaca, Perú. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function calcularDosis() {
+            const edad = document.getElementById('edadInput').value;
+            document.getElementById('edadTexto').innerText = edad + " años";
+            
+            const resultado = document.getElementById('resultadoDosis');
+            if (edad <= 5) {
+                resultado.innerText = "Dosis recomendada: 1 a 2 chocolates al día (10g - 20g)";
+            } else {
+                resultado.innerText = "Dosis recomendada: 2 chocolates al día (20g)";
+            }
+        }
+
+        function selectFace(element) {
+            const buttons = document.querySelectorAll('.face-btn');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        let currentRating = 0;
+        function setRating(rating) {
+            currentRating = rating;
+            const stars = document.querySelectorAll('.star-rating span');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function enviarEncuesta() {
+            document.getElementById('mensajeExito').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('mensajeExito').style.display = 'none';
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
